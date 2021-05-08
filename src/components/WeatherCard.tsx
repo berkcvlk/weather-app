@@ -1,38 +1,43 @@
+import Weather from "../models/weather-model";
 import styles from "./WeatherCard.module.css";
 
-const WeatherCard = () => {
+const WeatherCard: React.FC<{ weatherData: Weather }> = (props) => {
+  const { name, weather, main, base, sys } = props.weatherData;
+
   return (
     <div className={styles["weather-card"]}>
       <header className={styles["weather-city"]}>
-        Trabzon Province
-        <span className={styles["weather-country"]}>TR</span>
+        {name}
+        <span className={styles["weather-country"]}>{sys.country}</span>
       </header>
       <div className={styles["weather-itself"]}>
-        <span className={styles["weather-temp"]}>19</span>
-        <span className={styles["weather-symbol"]}>°C</span> <br/>
-        <span className={styles["weather-desc"]}>Broken Clouds</span>
+        <span className={styles["weather-temp"]}>{Math.floor(main.temp)}</span>
+        <span className={styles["weather-symbol"]}>°C</span> <br />
+        <span className={styles["weather-desc"]}>{weather[0].description}</span>
       </div>
       <main className={styles["weather-details"]}>
         <div className={styles["detail"]}>
           <span className={styles["title"]}>Feels like:</span>
-          <span className={styles["content"]}>18</span>
+          <span className={styles["content"]}>{main.feels_like}</span>
         </div>
         <div className={styles["detail"]}>
           <span className={styles["title"]}>Min/Max:</span>
-          <span className={styles["content"]}>19/19</span>
+          <span className={styles["content"]}>
+            {main.temp_min}/{main.temp_min}
+          </span>
         </div>
         <div className={styles["detail"]}>
           <span className={styles["title"]}>Wind:</span>
-          <span className={styles["content"]}>1.03 meter/sec</span>
+          <span className={styles["content"]}>-</span>
         </div>
         <div className={styles["detail"]}>
           <span className={styles["title"]}>Humidity:</span>
-          <span className={styles["content"]}>68%</span>
+          <span className={styles["content"]}>{main.humidity}</span>
         </div>
       </main>
       <footer>
         <span className={styles["weather-base"]}>
-          *The results are base on <strong>"stations"</strong>
+          *The results are base on <strong>"{base}"</strong>
         </span>
       </footer>
     </div>
