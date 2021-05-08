@@ -1,0 +1,28 @@
+.search-bar {
+  border: none;
+  border-bottom: 2px solid var(--text-faded-color);
+
+  width: 650px;
+
+  font-family: "Rubik", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+
+  padding-bottom: 5px;
+  margin-bottom: 95px;
+}
+
+.search-bar::placeholder {
+  font-family: "Rubik", sans-serif;
+  font-size: 32px;
+
+  color: var(--text-faded-color);
+}
+
+.search-bar:focus {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid var(--primary-color);
+
+  color: var(--primary-color);
+}

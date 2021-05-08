@@ -1,8 +1,7 @@
-import React from "react";
-import "./App.css";
+import Main from "./layouts/Main";
 
 function App() {
-  return <div>{process.env.REACT_APP_WEATHER_API}</div>;
+  return <Main/>;
 }
 
 export default App;
