@@ -5,7 +5,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   color: var(--text-primary-color);
+}
+
+.logo {
+  margin-top: 55px;
+  margin-bottom: 75px;
 }
