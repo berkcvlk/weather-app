@@ -5,20 +5,22 @@ import SearchDropdown from "./SearchDropdown";
 import { WeatherContext } from "../../store/weather-context";
 
 const SearchBar = () => {
-  const { cityList, getCityList } = useContext(WeatherContext);
+  const { cityList, fetchCityList } = useContext(WeatherContext);
   const [city, setCity] = useState<string>("");
 
   useEffect(() => {
-    if (!city && city.length < 3) {
+    if (!city && city.length <= 3) {
       return;
     }
 
-    const getCityTimeout = setTimeout(getCityList.bind(null, city), 300);
+    // Set a timer for delay
+    const getCityTimeout = setTimeout(fetchCityList.bind(null, city), 300);
 
     return () => {
+      // Clear timer
       clearTimeout(getCityTimeout);
     };
-  }, [city, getCityList]);
+  }, [city, fetchCityList]);
 
   const changeHandler = (event: React.FormEvent<HTMLInputElement>) => {
     const newValue = event.currentTarget.value;

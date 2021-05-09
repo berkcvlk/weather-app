@@ -4,10 +4,11 @@ import { WeatherContext } from "../../store/weather-context";
 import styles from "./SearchedItem.module.css";
 
 const SearchedItem: React.FC<{ city: ICity }> = (props) => {
-  const { fetchWeatherByCity } = useContext(WeatherContext);
+  const { fetchWeatherByCity, resetCityList } = useContext(WeatherContext);
 
   const fetchWeatherHandler = (city: string) => {
     fetchWeatherByCity(city);
+    resetCityList();
   };
 
   return (
@@ -19,4 +20,5 @@ const SearchedItem: React.FC<{ city: ICity }> = (props) => {
     </div>
   );
 };
+
 export default SearchedItem;

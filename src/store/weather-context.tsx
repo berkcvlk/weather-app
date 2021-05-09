@@ -4,16 +4,18 @@ import IWeather, { initialState } from "../models/weather-model";
 
 interface IWeatherContext {
   weatherData: IWeather;
-  fetchWeatherByCity: (city: string) => void;
   cityList: ICity[];
-  getCityList: (city: string) => void;
+  fetchWeatherByCity: (city: string) => void;
+  fetchCityList: (city: string) => void;
+  resetCityList: () => void;
 }
 
 export const WeatherContext = React.createContext<IWeatherContext>({
   weatherData: initialState,
-  fetchWeatherByCity: (city: string) => {},
   cityList: [],
-  getCityList: (city: string) => {},
+  fetchWeatherByCity: (city) => {},
+  fetchCityList: (city) => {},
+  resetCityList: () => {},
 });
 
 const WeatherContextProvider: React.FC = ({ children }) => {
@@ -32,7 +34,7 @@ const WeatherContextProvider: React.FC = ({ children }) => {
       });
   };
 
-  const getCityList = useCallback((city: string) => {
+  const fetchCityList = useCallback((city: string) => {
     fetch("current.city.list.json")
       .then((res) => res.json())
       .then((data) => {
@@ -52,9 +54,19 @@ const WeatherContextProvider: React.FC = ({ children }) => {
       });
   }, []);
 
+  const resetCityList = () => {
+    setCityList([]);
+  };
+
   return (
     <WeatherContext.Provider
-      value={{ weatherData, fetchWeatherByCity, cityList, getCityList }}
+      value={{
+        weatherData,
+        cityList,
+        fetchWeatherByCity,
+        fetchCityList,
+        resetCityList,
+      }}
     >
       {children}
     </WeatherContext.Provider>

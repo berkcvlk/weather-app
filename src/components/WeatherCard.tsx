@@ -6,6 +6,14 @@ const WeatherCard = () => {
   const { weatherData } = useContext(WeatherContext);
   const { name, weather, main, base, sys } = weatherData;
 
+  if (name.length === 0) {
+    return (
+      <div style={{color: "#ff9a9a"}}>
+        <strong>Please enter a city name to get weather!</strong>
+      </div>
+    );
+  }
+
   return (
     <div className={styles["weather-card"]}>
       <header className={styles["weather-city"]}>
