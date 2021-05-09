@@ -1,0 +1,16 @@
+.search-dropdown {
+  position: absolute;
+  background-color: #fff;
+
+  width: 650px;
+  max-height: 450px;
+  overflow: auto;
+  padding: 25px 30px;
+
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0px 7px 12px 0px rgb(0 0 0 / 5%);
+}
+
+.search-dropdown::-webkit-scrollbar {
+  display: none;
+}

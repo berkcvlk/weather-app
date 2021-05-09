@@ -1,0 +1,12 @@
+.searched-item {
+  border-radius: 0.375rem;
+  padding: 12px 20px;
+  margin-bottom: 5px;
+
+  cursor: pointer;
+}
+
+.searched-item:hover,
+.searched-item:active {
+  background-color: #fafafa;
+}

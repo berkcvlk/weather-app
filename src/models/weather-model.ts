@@ -1,4 +1,4 @@
-interface Weather {
+interface IWeather {
   weather: [
     {
       id: number;
@@ -19,7 +19,7 @@ interface Weather {
   };
 }
 
-export const initialState: Weather = {
+export const initialState: IWeather = {
   weather: [
     {
       id: 0,
@@ -40,4 +40,4 @@ export const initialState: Weather = {
   },
 };
 
-export default Weather;
+export default IWeather;

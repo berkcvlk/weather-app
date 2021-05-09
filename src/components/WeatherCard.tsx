@@ -1,8 +1,10 @@
-import Weather from "../models/weather-model";
+import { useContext } from "react";
+import { WeatherContext } from "../store/weather-context";
 import styles from "./WeatherCard.module.css";
 
-const WeatherCard: React.FC<{ weatherData: Weather }> = (props) => {
-  const { name, weather, main, base, sys } = props.weatherData;
+const WeatherCard = () => {
+  const { weatherData } = useContext(WeatherContext);
+  const { name, weather, main, base, sys } = weatherData;
 
   return (
     <div className={styles["weather-card"]}>

@@ -1,27 +1,40 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./SearchBar.module.css";
 
-const SearchBar: React.FC<{ fetchData: (city: string) => void }> = (props) => {
+import SearchDropdown from "./SearchDropdown";
+import { WeatherContext } from "../../store/weather-context";
+
+const SearchBar = () => {
+  const { cityList, getCityList } = useContext(WeatherContext);
   const [city, setCity] = useState<string>("");
 
-  const onChangedHandler = (event: React.FormEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    if (!city && city.length < 3) {
+      return;
+    }
+
+    const getCityTimeout = setTimeout(getCityList.bind(null, city), 300);
+
+    return () => {
+      clearTimeout(getCityTimeout);
+    };
+  }, [city, getCityList]);
+
+  const changeHandler = (event: React.FormEvent<HTMLInputElement>) => {
     const newValue = event.currentTarget.value;
     setCity(newValue);
-
-    if (newValue.trim().length > 3) {
-      props.fetchData(newValue);
-    }
   };
 
   return (
-    <div>
+    <div className={styles["search-bar-wrapper"]}>
       <input
         className={styles["search-bar"]}
         type="text"
         placeholder="Search for city..."
         value={city}
-        onChange={onChangedHandler}
+        onChange={changeHandler}
       />
+      {cityList.length !== 0 && <SearchDropdown />}
     </div>
   );
 };
