@@ -4,12 +4,39 @@
   border-radius: 15px;
 
   background-color: var(--background-faded-color);
-  background-image: url("../assets/icons/cloudy.svg");
   background-repeat: no-repeat;
   background-size: 400px;
   background-position: 125% 50%;
 
   padding: 55px 60px;
+}
+
+.broken-clouds {
+  background-image: url("../assets/icons/broken-clouds.svg");
+}
+
+.clear {
+  background-image: url("../assets/icons/clear.svg");
+}
+
+.few-clouds {
+  background-image: url("../assets/icons/few-clouds.svg");
+}
+
+.mist {
+  background-image: url("../assets/icons/mist.svg");
+}
+
+.rain {
+  background-image: url("../assets/icons/rain.svg");
+}
+
+.snow {
+  background-image: url("../assets/icons/snow.svg");
+}
+
+.thunderstorm {
+  background-image: url("../assets/icons/clear.svg");
 }
 
 .weather-city {

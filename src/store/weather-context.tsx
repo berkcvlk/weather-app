@@ -29,7 +29,6 @@ const WeatherContextProvider: React.FC = ({ children }) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setWeatherData(data);
       });
   };
