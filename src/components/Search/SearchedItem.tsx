@@ -6,16 +6,13 @@ import styles from "./SearchedItem.module.css";
 const SearchedItem: React.FC<{ city: ICity }> = (props) => {
   const { fetchWeatherByCity, resetCityList } = useContext(WeatherContext);
 
-  const fetchWeatherHandler = (city: string) => {
-    fetchWeatherByCity(city);
+  const fetchWeatherHandler = () => {
+    fetchWeatherByCity(props.city.name);
     resetCityList();
   };
 
   return (
-    <div
-      onClick={fetchWeatherHandler.bind(null, props.city.name)}
-      className={styles["searched-item"]}
-    >
+    <div onClick={fetchWeatherHandler} className={styles["searched-item"]}>
       {props.city.name}
     </div>
   );

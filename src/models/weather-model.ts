@@ -23,18 +23,6 @@ interface IWeather {
   };
 }
 
-export enum WeatherConditions {
-  "01" = "clear",
-  "02" = "few-clouds",
-  "03" = "scattered-clouds",
-  "04" = "broken-clouds",
-  "09" = "shower-rain",
-  "010" = "rain",
-  "011" = "thunderstorm",
-  "013" = "snow",
-  "050" = "mist",
-}
-
 export const initialState: IWeather = {
   weather: [
     {
